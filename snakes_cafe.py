@@ -4,7 +4,7 @@ menu = """
 **************************************
 **    Welcome to the Snakes Cafe!   **
 **    Please see our menu below.    **
-**
+**                                  **
 ** To quit at any time, type "quit" **
 **************************************
 
@@ -61,14 +61,28 @@ def print_menu():
 
 #prompt user for order, > with trailing space
 meal_order = "Nothing"
+order_summary = {}
+
+def show_summary():
+    summ = "Order Summary"
+
+    print(f"""
+    ***********************************
+    **     {summ.center(31)}         ** 
+    **{str(order_summary).center(31)}**    
+    ***********************************
+    """)
 
 #acknowledge order
 def show_order(order):
   print(f"** {menu_items[order]} {order} has been added to your meal **")
+  take_order()
 
 def update_order_num(order):
   menu_items[order] += 1
-  
+#   order_summary[order].append(menu_items[order])
+
+
 def take_order():
   meal_order = input('> ')
   if meal_order in menu_items:
@@ -76,6 +90,8 @@ def take_order():
     show_order(meal_order)
   else: 
     print("Item Not Found")
+
+
 
 # call functions
 print_menu()
