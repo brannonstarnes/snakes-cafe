@@ -75,7 +75,10 @@ def show_summary():
 
 #acknowledge order
 def show_order(order):
-  print(f"** {menu_items[order]} {order} has been added to your meal **")
+  if menu_items[order] == 1:
+    print(f"** {menu_items[order]} {order} has been added to your meal **")
+  else:
+    print(f"** {menu_items[order]} {order}s have been added to your meal **")   
   take_order()
 
 def update_order_num(order):
