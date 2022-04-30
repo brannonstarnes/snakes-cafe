@@ -6,8 +6,8 @@ This program presents a menu for Snake's Cafe and takes orders through user inpu
 
 - Open terminal
 - Clone repository:
-  - SSH: git@github.com:brannonstarnes/snakes-cafe.git
-  - Github CLI: gh repo clone brannonstarnes/snakes-cafe
+  - SSH: 'git@github.com:brannonstarnes/snakes-cafe.git'
+  - Github CLI: 'gh repo clone brannonstarnes/snakes-cafe'
 - Navigate to root folder
 - Enter "python snakes_cafe.py" to run in terminal
 
