@@ -6,6 +6,7 @@ menu = """
 **    Please see our menu below.    **
 **                                  **
 ** To quit at any time, type "quit" **
+** Type "options" to see commands.  **
 **************************************
 
 Appetizers
@@ -65,25 +66,29 @@ order_summary = {}
 
 def show_summary():
     summ = "Order Summary"
-
+    total_items = order_summary
+    top_bottom_lines = "*"*(len(str(total_items))+2)
     print(f"""
-    ***********************************
-    **     {summ.center(31)}         ** 
-    **{str(order_summary).center(31)}**    
-    ***********************************
+            {top_bottom_lines}
+            *{summ.center(len(str(total_items)))}*         
+            *{str(total_items).center(1)}*    
+            {top_bottom_lines}
     """)
+
 
 #acknowledge order
 def show_order(order):
+  
   if menu_items[order] == 1:
     print(f"\n** {menu_items[order]} {order} has been added to your meal **\n")
   else:
     print(f"\n** {menu_items[order]} {order}s have been added to your meal **\n")   
+  
   take_order()
 
 def update_order_num(order):
   menu_items[order] += 1
-#   order_summary[order].append(menu_items[order])
+  order_summary[order] = menu_items[order]
 
 
 def take_order():
@@ -91,15 +96,30 @@ def take_order():
   if meal_order == 'quit':
       print('\nGoodbye!\n')
       quit()
+  
+  if meal_order == 'menu':
+      print(menu)
+      take_order()
+
+  if meal_order == 'summary':
+      print(show_summary())
+      take_order()
+
+  if meal_order == 'options':
+      print(show_commands())
+      take_order()
 
   if meal_order in menu_items:
     update_order_num(meal_order)
     show_order(meal_order)
+    
   else: 
     print("\nItem Not Found\n")
 
-
+def show_commands():
+    print("Command Options: menu | summary | quit ")
 
 # call functions
 print_menu()
 take_order()
+# show_summary()
